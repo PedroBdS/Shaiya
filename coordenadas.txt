@@ -1,0 +1,10 @@
+Coordenada neutra (940, 1065)
+posição correta do leilão (658, 378)
+posição correta do x do leilão  (1320, 259) delta +662 -119
+ultimo item (990, 698)
+segundo item (990, 443)
+
+imagem1 = capturar_tela((1176, 398), (1287, 406))
+imagem2 = capturar_tela((1176, 449), (1287, 457))
+
+entrar - ERROR 10053 = (959, 539)
