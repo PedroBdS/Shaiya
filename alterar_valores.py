@@ -1,6 +1,10 @@
+from functions.abrir_shaiya import *
+from functions.funcoes import *
+from functions.notificar_telegram import *
+from functions.comprar_item import *
 import tkinter as tk
 from tkinter import messagebox
-from funcoes import *
+from functions.funcoes import *
 from PIL import Image, ImageTk
 
 def ver_qtd():

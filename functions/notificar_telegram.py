@@ -23,6 +23,6 @@ def notificar_via_telegram(texto):
         asyncio.set_event_loop(loop)
         loop.run_until_complete(enviar_mensagem_telegram(texto))
 
+
 if __name__ == '__main__':
-    
     notificar_via_telegram('teste')

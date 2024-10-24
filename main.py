@@ -1,5 +1,9 @@
-from funcoes import *
+from functions.abrir_shaiya import *
+from functions.comprar_item import *
+from functions.funcoes import *
+from functions.ler_leilao import *
 from functions.notificar_telegram import *
+
 
 shaiya_aberto = checar_cor((939, 1061), (251, 239, 185))
 
@@ -28,6 +32,7 @@ while True:
         nome_1, valor_1, nome_2, valor_2, nome_3, valor_3 = ler_leilao()
 
         teste2 = printar_coordenadas((737, 365),(1308, 519))
+
     except:
         print('Erro ao ler leilão.')
         continue
