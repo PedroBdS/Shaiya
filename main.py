@@ -1,4 +1,5 @@
 from funcoes import *
+from functions.notificar_telegram import *
 
 shaiya_aberto = checar_cor((939, 1061), (251, 239, 185))
 
@@ -10,6 +11,7 @@ time.sleep(0.4)
 click_ingame((931, 697))
 
 while True:
+
     if keyboard.is_pressed('F1'):
         print("Encerrando.")
         exit()

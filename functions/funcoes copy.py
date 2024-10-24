@@ -6,13 +6,8 @@ import numpy as np
 import pytesseract
 import csv
 import os
-import asyncio
-from telegram import Bot
 
 lista_csv = '/.lista_nova.csv'
-
-bot = Bot(token='7507348213:AAHSYUXN1RppFnMGFxVaclmQDyT4o7UvLx8')
-CHAT_ID = '7234952237'
 
 pytesseract.pytesseract.tesseract_cmd = r'C:/Program Files/Tesseract-OCR/tesseract.exe'
 
@@ -46,7 +41,6 @@ def adiciona_coluna_zerada(matriz):
     return np.hstack((coluna_zeros, matriz))
 
 def click_ingame(coordenada, delay=0):
-    coordenada2 = (coordenada[0]+1, coordenada[1])
 
     pyautogui.moveTo(coordenada)
     pyautogui.mouseDown()
@@ -56,6 +50,8 @@ def click_ingame(coordenada, delay=0):
     pyautogui.moveTo(coordenada)
 
     pyautogui.mouseUp()
+    
+    time.sleep(delay)
 
 def matriz_para_tuplas(matriz):
     return [tuple(int(valor) for valor in linha) for linha in matriz]
@@ -429,24 +425,7 @@ def extrair_texto_imagem(imagem):
     texto = pytesseract.image_to_string(imagem).strip()  # Remove quebras de linha e espaços extras
     return texto
 
-async def enviar_mensagem_telegram(texto):
-    await bot.send_message(chat_id=CHAT_ID, text=texto)
 
-def notificar_via_telegram(texto):
-    # Obtém o loop de eventos atual ou cria um novo se não houver
-    try:
-        loop = asyncio.get_event_loop()
-        if loop.is_running():
-            # Se o loop já estiver rodando, cria uma tarefa assíncrona
-            asyncio.ensure_future(enviar_mensagem_telegram(texto))
-        else:
-            # Se não houver loop rodando, roda até a conclusão
-            loop.run_until_complete(enviar_mensagem_telegram(texto))
-    except RuntimeError:
-        # Se não houver um loop ativo, cria um novo e define como padrão
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        loop.run_until_complete(enviar_mensagem_telegram(texto))
 
 def comparar_item(nome, valor, indice=1):
     
